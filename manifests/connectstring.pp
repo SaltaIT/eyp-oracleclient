@@ -24,14 +24,14 @@ define oracleclient::connectstring(
   #   )
   # )
 
-#   PROD1=
-#         (DESCRIPTION=
-#                 (ADDRESS=(PROTOCOL=tcp)(HOST=systemadmindb01-vip.systemadmin.es)(PORT=1521))
-#             (CONNECT_DATA=
-#                 (SERVICE_NAME=PROD)
-#                 (INSTANCE_NAME=PROD1)
-#             )
-#         )
+
+  # INSTANCE_NAME example
+  # (...)
+  #             (CONNECT_DATA=
+  #                 (SERVICE_NAME=PROD)
+  #                 (INSTANCE_NAME=PROD1)
+  #             )
+  # (...)
 
   if($csalias)
   {
@@ -43,5 +43,4 @@ define oracleclient::connectstring(
     order   => '00',
     content => template("${module_name}/tnsnames.erb"),
   }
-
 }

@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.2.13
+## 0.2.14
 
 * updated dependencies
 
