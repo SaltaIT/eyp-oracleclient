@@ -24,14 +24,14 @@ define oracleclient::connectstring(
   #   )
   # )
 
-
-  # INSTANCE_NAME example
-  # (...)
-  #             (CONNECT_DATA=
-  #                 (SERVICE_NAME=PROD)
-  #                 (INSTANCE_NAME=PROD1)
-  #             )
-  # (...)
+  # PROD1=
+  # (DESCRIPTION=
+  #   (ADDRESS=(PROTOCOL=tcp)(HOST=systemadmindb01-vip.systemadmin.es)(PORT=1521))
+  #   (CONNECT_DATA=
+  #       (SERVICE_NAME=PROD)
+  #       (INSTANCE_NAME=PROD1)
+  #   )
+  # )
 
   if($csalias)
   {
