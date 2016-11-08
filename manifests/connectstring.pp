@@ -10,6 +10,7 @@ define oracleclient::connectstring(
                                     $connect_timeout           = '5',
                                     $transport_connect_timeout = '3',
                                     $retry_count               = '3',
+                                    $instance_name             = undef,
                                   ) {
 
   # example
@@ -22,6 +23,15 @@ define oracleclient::connectstring(
   #     (SERVICE_NAME = HYBRIS)
   #   )
   # )
+
+#   PROD1=
+#         (DESCRIPTION=
+#                 (ADDRESS=(PROTOCOL=tcp)(HOST=systemadmindb01-vip.systemadmin.es)(PORT=1521))
+#             (CONNECT_DATA=
+#                 (SERVICE_NAME=PROD)
+#                 (INSTANCE_NAME=PROD1)
+#             )
+#         )
 
   if($csalias)
   {

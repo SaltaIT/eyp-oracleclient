@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.12
+
+* added instance_name
+
 ## 0.2.11
 
 * allow URLs for **oracleclient::package**

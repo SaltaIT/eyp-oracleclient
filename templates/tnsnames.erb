@@ -19,6 +19,9 @@
   (CONNECT_DATA =
     (SERVER = <% if @shared %>SHARED<% else %>DEDICATED<% end %>)
     (SERVICE_NAME = <%= @dbname %>)
+    <%- if defined?(@instance_name) -%>
+    (INSTANCE_NAME=<%= @instance_name %>)
+    <%- end -%>
   )
 )
 <% end %>
