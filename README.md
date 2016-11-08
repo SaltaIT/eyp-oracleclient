@@ -1,4 +1,4 @@
-# oracleclient 
+# oracleclient
 
 #### Table of Contents
 
@@ -15,9 +15,7 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+Installs oracle client from a URL or a bucketed resource and configures **tnsnames**
 
 ## Module Description
 
@@ -45,11 +43,18 @@ etc.), mention it here.
 
 ### Beginning with oracleclient
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'oracleclient':
+  package => 'puppet:///oracle/linuxamd64_12c_client.zip',
+  addtopath => true,
+}
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+oracleclient::connectstring { 'EXABATP':
+  host => [ 'ukncavx01-scan.systemadmin.es', 'uknwavx02-scan.systemadmin.es' ],
+  port => 30596,
+  dbname => 'EXABATP',
+}
+```
 
 ## Usage
 
