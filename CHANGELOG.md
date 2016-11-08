@@ -3,6 +3,7 @@
 ## 0.2.14
 
 * updated dependencies
+* include ::ldconfig class
 
 ## 0.2.12
 

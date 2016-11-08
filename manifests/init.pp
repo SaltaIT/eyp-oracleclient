@@ -243,6 +243,8 @@ class oracleclient  (
     }
   }
 
+  include ::ldconfig
+
   #/u01/app/product/11/client/lib
   ldconfig::diradd { "${oraclehome}/lib":
     type => 'oracleclient',
