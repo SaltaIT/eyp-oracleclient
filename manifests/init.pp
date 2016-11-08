@@ -54,8 +54,9 @@ class oracleclient  (
     fail("Incompatible options: localfile(${localfile}) and package($package)")
   }
 
-  package { $dependencies:
-    ensure => 'installed',
+  exec { 'which unzip eyp-oracleclient':
+    command => 'which unzip',
+    unless  => 'which unzip',
   }
 
   Exec {
@@ -186,7 +187,7 @@ class oracleclient  (
   exec { "unzip ${srcdir}/oracleclient-${version}.zip":
     command => "unzip ${srcdir}/oracleclient-${version}.zip" ,
     cwd     => $srcdir,
-    require => Package[$dependencies],
+    require => Exec['which unzip eyp-oracleclient'],
     notify  => Exec["runinstaller client ${version}"],
     creates => "${srcdir}/client/runInstaller",
   }

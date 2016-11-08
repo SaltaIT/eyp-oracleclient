@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.13
+
+* updated dependencies
+
 ## 0.2.12
 
 * added instance_name

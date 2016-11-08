@@ -8,7 +8,6 @@ class oracleclient::params {
       {
         /^[67].*$/:
         {
-          $dependencies= [ 'unzip' , 'gawk' ]
         }
         default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
       }
