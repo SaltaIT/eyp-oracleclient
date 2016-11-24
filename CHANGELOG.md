@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.15
+
+* added execution of /u01/app/oraInventory/orainstRoot.sh
+
 ## 0.2.14
 
 * updated dependencies

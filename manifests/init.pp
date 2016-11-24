@@ -213,11 +213,20 @@ class oracleclient  (
                   File[ [ $oraclehome, $oraclebase, $orainventory, $srcdir, "${oraclehome}/responsefile.rsp" ] ]
                   ],
     refreshonly => true,
-    notify      => Exec["runinstaller client ${version} rootsh"],
+    notify      => Exec[ [ "runinstaller client ${version} rootsh", "orainstRoot.sh ${orainventory}" ] ],
   }
 
   exec { "runinstaller client ${version} rootsh":
     command     => "${oraclehome}/root.sh > ${oraclehome}/.rootsh.log 2>&1",
+    timeout     => 0,
+    require     => Exec["runinstaller client ${version}"],
+    refreshonly => true,
+  }
+
+  #/u01/app/oraInventory/orainstRoot.sh
+  exec { "orainstRoot.sh ${orainventory}":
+    command     => "${orainventory}/orainstRoot.sh > ${oraclehome}/.orainstRoot.log 2>&1",
+    onlyif      => "test -f ${orainventory}/orainstRoot.sh",
     timeout     => 0,
     require     => Exec["runinstaller client ${version}"],
     refreshonly => true,
