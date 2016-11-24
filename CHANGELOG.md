@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.16
+
+* added onlyif for  exec "runinstaller client ${version} rootsh" (**${oraclehome}/root.sh**)
+
 ## 0.2.15
 
 * added execution of /u01/app/oraInventory/orainstRoot.sh

@@ -218,6 +218,7 @@ class oracleclient  (
 
   exec { "runinstaller client ${version} rootsh":
     command     => "${oraclehome}/root.sh > ${oraclehome}/.rootsh.log 2>&1",
+    onlyif      => "test -f ${oraclehome}/root.sh",
     timeout     => 0,
     require     => Exec["runinstaller client ${version}"],
     refreshonly => true,
