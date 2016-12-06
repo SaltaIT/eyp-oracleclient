@@ -212,17 +212,15 @@ class oracleclient  (
     group   => 'root',
     mode    => '0755',
     content => template("${module_name}/customruninstaller.erb"),
-    require     => [ Exec["unzip ${srcdir}/oracleclient-${version}.zip"],
+    require => [ Exec["unzip ${srcdir}/oracleclient-${version}.zip"],
                   File[ [ $oraclehome, $oraclebase, $orainventory, $srcdir, "${oraclehome}/responsefile.rsp" ] ]
-                  ],
+                ],
   }
 
   exec { "runinstaller client ${version}":
-    command     => $installer_command,
+    command     => "/bin/bash ${srcdir}/client/.eyp-runInstalled.sh",
     timeout     => 0,
-    require     => [ Exec["unzip ${srcdir}/oracleclient-${version}.zip"],
-                  File[ [ $oraclehome, $oraclebase, $orainventory, $srcdir, "${oraclehome}/responsefile.rsp" ] ]
-                  ],
+    require     => File["${srcdir}/client/.eyp-runInstalled.sh"],
     refreshonly => true,
     notify      => Exec[ [ "runinstaller client ${version} rootsh", "orainstRoot.sh ${orainventory}" ] ],
   }
