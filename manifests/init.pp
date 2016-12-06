@@ -13,8 +13,8 @@ class oracleclient  (
                       $createusers            = true,
                       $addtopath              = false,
                       $debug_eyp_runinstaller = false,
-                      $software_to_install     = [ 'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
-                                                    'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc' ],
+                      $software_to_install    = [ 'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
+                                                  'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc' ],
                     )inherits params {
 
   validate_array($languages)
