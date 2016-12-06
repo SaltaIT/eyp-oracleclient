@@ -1,3 +1,16 @@
 #!/bin/bash
 
-<%= @installer_command %>
+mount | grep -P "^$(df -hP /tmp/ | awk '{ print $1 }' | tail -n1)[ \t]+" | grep noexec
+
+if [ "$?" -eq 0 ];
+then
+  mount -o remount,exec $(df -hP /tmp/ | awk '{ print $NF }' | tail -n1)
+  <%= @installer_command %>
+  RET=$?
+  mount -o remount,noexec $(df -hP /tmp/ | awk '{ print $NF }' | tail -n1)
+else
+  <%= @installer_command %>
+  RET=$?
+fi
+
+exit $RET
