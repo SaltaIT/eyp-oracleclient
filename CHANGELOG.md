@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.17
+
+* added ${srcdir}/client/.eyp-runInstalled.sh to remount /tmp with exec
+
 ## 0.2.16
 
 * added onlyif for  exec "runinstaller client ${version} rootsh" (**${oraclehome}/root.sh**)
