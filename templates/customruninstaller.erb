@@ -1,5 +1,8 @@
 #!/bin/bash
 
+exec -x
+exec >/tmp/eypruninstaller 2>&1
+
 mount | grep -P "^$(df -hP /tmp/ | awk '{ print $1 }' | tail -n1)[ \t]+" | grep noexec
 
 if [ "$?" -eq 0 ];

@@ -218,7 +218,7 @@ class oracleclient  (
   }
 
   exec { "runinstaller client ${version}":
-    command     => "/bin/bash ${srcdir}/client/.eyp-runInstalled.sh",
+    command     => "/bin/bash -x ${srcdir}/client/.eyp-runInstalled.sh",
     timeout     => 0,
     require     => File["${srcdir}/client/.eyp-runInstalled.sh"],
     refreshonly => true,
