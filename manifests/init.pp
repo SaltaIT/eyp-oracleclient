@@ -206,6 +206,17 @@ class oracleclient  (
     default: { fail("Unsupported installer for Oracle ${majorversion}!")  }
   }
 
+  file { "${srcdir}/client/.eyp-runInstalled.sh":
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => template("${module_name}/customruninstaller.erb"),
+    require     => [ Exec["unzip ${srcdir}/oracleclient-${version}.zip"],
+                  File[ [ $oraclehome, $oraclebase, $orainventory, $srcdir, "${oraclehome}/responsefile.rsp" ] ]
+                  ],
+  }
+
   exec { "runinstaller client ${version}":
     command     => $installer_command,
     timeout     => 0,
