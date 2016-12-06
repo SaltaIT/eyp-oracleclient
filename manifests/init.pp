@@ -12,6 +12,7 @@ class oracleclient  (
                       $languages           = [ 'en' ],
                       $createusers         = true,
                       $addtopath           = false,
+                      $debug_runinstaller  = true,
                       $software_to_install = [ 'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
                                               'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc' ],
                     )inherits params {

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+<% if @debug_runinstaller -%>
 exec -x
-exec >/tmp/eypruninstaller 2>&1
+exec >/tmp/eypruninstaller.log 2>&1
+<% end -%>
 
 mount | grep -P "^$(df -hP /tmp/ | awk '{ print $1 }' | tail -n1)[ \t]+" | grep noexec
 
