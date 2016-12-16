@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.19
+
+* bugfix which wget duplicat deckaration
+
 ## 0.2.18
 
 * added oracleclient::instantclient
