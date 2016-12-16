@@ -49,11 +49,39 @@ class oracleclient::instantclient (
     require => Exec[ [ 'which wget eyp-oracleclient', "mkdir p oracleclient instantclient ${srcdir}" ] ],
   }
 
+  # [root@centos7 src]# rpm -Uvh oracle-instantclient11.2-basic.rpm
+  # Preparing...                          ################################# [100%]
+  # Updating / installing...
+  #    1:oracle-instantclient11.2-basic-11################################# [100%]
 
-  # oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.i386
-  # package { "oracle-instantclient11.2-sqlplus":
-  #   ensure => $package_ensure,
-  # }
-  # oracle-instantclient11.2-basic-11.2.0.4.0-1.i386
-  # oracle-instantclient11.2-devel-11.2.0.4.0-1.i386
+  package { "oracle-instantclient${ver}-basic":
+    ensure   => $package_ensure,
+    provider => 'rpm',
+    source   => "${srcdir}/oracle-instantclient11.2-basic.rpm",
+  }
+
+  # [root@centos7 src]# rpm -Uvh oracle-instantclient11.2-devel.rpm
+  # Preparing...                          ################################# [100%]
+  # Updating / installing...
+  #    1:oracle-instantclient11.2-devel-11################################# [100%]
+
+  package { "oracle-instantclient${ver}-devel":
+    ensure   => $package_ensure,
+    provider => 'rpm',
+    source   => "${srcdir}/oracle-instantclient11.2-devel.rpm",
+    require  => Package["oracle-instantclient${ver}-basic"],
+  }
+
+  # [root@centos7 src]# rpm -Uvh oracle-instantclient11.2-sqlplus.rpm
+  # Preparing...                          ################################# [100%]
+  # Updating / installing...
+  #    1:oracle-instantclient11.2-sqlplus-################################# [100%]
+
+  package { "oracle-instantclient${ver}-sqlplus":
+    ensure   => $package_ensure,
+    provider => 'rpm',
+    source   => "${srcdir}/oracle-instantclient11.2-sqlplus.rpm",
+    require  => Package["oracle-instantclient${ver}-devel"],
+  }
+
 }
