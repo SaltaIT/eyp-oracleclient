@@ -2,7 +2,7 @@
 
 ## 0.2.18
 
-* oracleclient::instantclient
+* added oracleclient::instantclient
 
 ## 0.2.17
 
