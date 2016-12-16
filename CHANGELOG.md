@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.18
+
+* oracleclient::instantclient
+
 ## 0.2.17
 
 * added ${srcdir}/client/.eyp-runInstalled.sh to remount /tmp with exec
