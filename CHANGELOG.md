@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## 0.2.20
+
+* bugfix instantclient dependencies
+
 ## 0.2.19
 
-* bugfix which wget duplicat deckaration
+* bugfix which wget duplicate declaration
 
 ## 0.2.18
 

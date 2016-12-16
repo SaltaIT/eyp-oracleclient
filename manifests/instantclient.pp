@@ -58,6 +58,7 @@ class oracleclient::instantclient (
     ensure   => $package_ensure,
     provider => 'rpm',
     source   => "${srcdir}/oracle-instantclient11.2-basic.rpm",
+    require  => Exec[ [ "wget instantclient basic ${srcdir}", "wget instantclient devel ${srcdir}", "wget instantclient sqlplus ${srcdir}" ] ],
   }
 
   # [root@centos7 src]# rpm -Uvh oracle-instantclient11.2-devel.rpm
