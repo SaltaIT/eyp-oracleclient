@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.2.21
+## 0.2.22
 
 * added optional comment on tnsnames
 * added puppet managed file on sqlnet.ora
