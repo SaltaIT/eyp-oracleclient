@@ -1,6 +1,6 @@
-#
-# puppet managed file
-#
+<% if defined?(@comment) -%>
+# <%= @comment %>
+<% end -%>
 <%= @csname %><% if defined?(@csalias) %>,<%= @csalias.join(',') %><% end %> =
 <% if @host.kind_of?(Array) -%>
 (DESCRIPTION_LIST=

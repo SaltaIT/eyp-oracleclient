@@ -2,7 +2,8 @@
 
 ## 0.2.21
 
-* added puppet banner to tnsnames.ora
+* added optional comment on tnsnames
+* added puppet managed file on sqlnet.ora
 
 ## 0.2.20
 

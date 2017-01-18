@@ -11,6 +11,7 @@ define oracleclient::connectstring(
                                     $transport_connect_timeout = '3',
                                     $retry_count               = '3',
                                     $instance_name             = undef,
+                                    $comment                   = undef,
                                   ) {
 
   # example
@@ -37,6 +38,8 @@ define oracleclient::connectstring(
   {
     validate_array($csalias)
   }
+
+  #TODO: agfegir banner amb puppet managed file
 
   concat::fragment{ "tnsnames ${csname}":
     target  => "${oracleclient::oraclehome}/network/admin/tnsnames.ora",
