@@ -11,7 +11,7 @@ define oracleclient::connectstring(
                                     $transport_connect_timeout = '3',
                                     $retry_count               = '3',
                                     $instance_name             = undef,
-                                    $comment                   = undef,
+                                    $description               = undef,
                                   ) {
 
   # example

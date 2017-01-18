@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.23
+
+* renamed oracleclient::connectstring **comment** to **description**
+
 ## 0.2.22
 
 * added optional comment on tnsnames
