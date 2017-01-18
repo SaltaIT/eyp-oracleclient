@@ -3,6 +3,7 @@
 ## 0.2.24
 
 * added puppet managed file header to tnsnames
+* increates description banner size per connectstring for improved visibility
 
 ## 0.2.23
 
