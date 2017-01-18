@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.21
+
+* added puppet banner to tnsnames.ora
+
 ## 0.2.20
 
 * bugfix instantclient dependencies
