@@ -1,5 +1,7 @@
 <% if defined?(@description) -%>
+#
 # <%= @description %>
+#
 <% end -%>
 <%= @csname %><% if defined?(@csalias) %>,<%= @csalias.join(',') %><% end %> =
 <% if @host.kind_of?(Array) -%>
