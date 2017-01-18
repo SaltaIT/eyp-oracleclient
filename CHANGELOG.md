@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.24
+
+* added puppet managed file header to tnsnames
+
 ## 0.2.23
 
 * renamed oracleclient::connectstring **comment** to **description**

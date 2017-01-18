@@ -39,11 +39,19 @@ define oracleclient::connectstring(
     validate_array($csalias)
   }
 
-  #TODO: agfegir banner amb puppet managed file
+  #TODO: afegir banner amb puppet managed file
+  if(!defined(Concat::Fragment['tnsnames header']))
+  {
+    concat::fragment{ 'tnsnames header':
+      target  => "${oracleclient::oraclehome}/network/admin/tnsnames.ora",
+      order   => '00',
+      content => "#\n# puppet managed file\n#\n",
+    }
+  }
 
   concat::fragment{ "tnsnames ${csname}":
     target  => "${oracleclient::oraclehome}/network/admin/tnsnames.ora",
-    order   => '00',
+    order   => '42',
     content => template("${module_name}/tnsnames.erb"),
   }
 }
