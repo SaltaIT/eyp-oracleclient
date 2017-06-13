@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.25
+
+* bugfix: honor **oracleclient::instantclient::ver**
+
 ## 0.2.24
 
 * added puppet managed file header to tnsnames
