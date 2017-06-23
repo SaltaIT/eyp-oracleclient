@@ -8,9 +8,9 @@
   "project_page": null,
   "issues_url": "https://github.com/NTTCom-MS/eyp-oracleclient/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"},
-    {"name":"eyp/ldconfig","version_requirement":">= 0.1.0"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0 < 9.9.9"},
+    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
+    {"name":"eyp/ldconfig","version_requirement":">= 0.1.0 < 0.2.0"}
   ],
   "operatingsystem_support": [
     {
