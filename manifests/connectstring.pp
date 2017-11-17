@@ -1,6 +1,6 @@
 define oracleclient::connectstring(
                                     $host,
-                                    $dbname,
+                                    $dbname                    = undef,
                                     $csname                    = $name,
                                     $csalias                   = undef,
                                     $port                      = '1521',
@@ -12,6 +12,9 @@ define oracleclient::connectstring(
                                     $retry_count               = '3',
                                     $instance_name             = undef,
                                     $description               = undef,
+                                    $community                 = undef,
+                                    $sid                       = undef,
+                                    $global_name               = undef,
                                   ) {
 
   # example
@@ -33,6 +36,20 @@ define oracleclient::connectstring(
   #       (INSTANCE_NAME=PROD1)
   #   )
   # )
+
+  # DWQ =
+  #   (DESCRIPTION =
+  #     (ADDRESS_LIST =
+  #       (ADDRESS =
+  #         (COMMUNITY = tcp.world) (PROTOCOL = TCP) (Host = 172.28.222.71 ) (Port = 11214 ) ) )
+  #       (CONNECT_DATA = (SID = DWQ ) (GLOBAL_NAME = DWQ ) ) )
+  #
+  # DWIASDEV =
+  #   (DESCRIPTION =
+  #     (ADDRESS_LIST =
+  #       (ADDRESS =
+  #         (COMMUNITY = tcp.world) (PROTOCOL = TCP) (Host = 172.28.222.18 ) (Port = 10200 ) ) )
+  #         (CONNECT_DATA = (SID = DWIAS ) (GLOBAL_NAME = DWIAS ) ) )
 
   if($csalias)
   {

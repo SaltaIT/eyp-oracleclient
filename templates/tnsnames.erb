@@ -1,4 +1,5 @@
 <% if defined?(@description) -%>
+
 #
 # <%= @description %>
 #
@@ -11,21 +12,35 @@
 <% @host.uniq.each do |val| -%>
   (DESCRIPTION =
     (CONNECT_TIMEOUT=<%= @connect_timeout %>)(TRANSPORT_CONNECT_TIMEOUT=<%= @transport_connect_timeout %>)(RETRY_COUNT=<%= @retry_count %>)
-    (ADDRESS = (PROTOCOL = TCP)(HOST = <%= val %>)(PORT = <%= @port %>))
+    (ADDRESS = <% if defined?(@community) %>(COMMUNITY = <%= @community %>)<% end %>(PROTOCOL = TCP)(HOST = <%= val %>)(PORT = <%= @port %>))
     (CONNECT_DATA =
       (SERVER = <% if @shared %>SHARED<% else %>DEDICATED<% end %>)
+      <%- if defined?(@dbname) -%>
       (SERVICE_NAME = <%= @dbname %>)
+      <%- end -%>
+      <%- if defined?(@sid) -%>
+      (SID = <%= @sid %>)
+      <%- end -%>
+      <%- if defined?(@global_name) -%>
+      (GLOBAL_NAME = <%= @global_name %>)
+      <%- end -%>
   )
 <% end -%>
 )
 <% else -%>
 (DESCRIPTION =
-  (ADDRESS = (PROTOCOL = TCP)(HOST = <%= @host %>)(PORT = <%= @port %>))
+  (ADDRESS = <% if defined?(@community) %>(COMMUNITY = <%= @community %>)<% end %>(PROTOCOL = TCP)(HOST = <%= @host %>)(PORT = <%= @port %>))
   (CONNECT_DATA =
     (SERVER = <% if @shared %>SHARED<% else %>DEDICATED<% end %>)
-    (SERVICE_NAME = <%= @dbname %>)
+    <%- if defined?(@dbname) %>(SERVICE_NAME = <%= @dbname %>)<% end -%>
     <%- if defined?(@instance_name) -%>
     (INSTANCE_NAME=<%= @instance_name %>)
+    <%- end -%>
+    <%- if defined?(@sid) -%>
+    (SID = <%= @sid %>)
+    <%- end -%>
+    <%- if defined?(@global_name) -%>
+    (GLOBAL_NAME = <%= @global_name %>)
     <%- end -%>
   )
 )
