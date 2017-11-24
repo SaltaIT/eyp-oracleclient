@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.27
+
+* bugfix identation
+
 ## 0.2.26
 
 * added more options to **oracleclient::connectstring**:
