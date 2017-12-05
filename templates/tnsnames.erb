@@ -32,7 +32,9 @@
   (ADDRESS = <% if defined?(@community) %>(COMMUNITY = <%= @community %>)<% end %>(PROTOCOL = TCP)(HOST = <%= @host %>)(PORT = <%= @port %>))
   (CONNECT_DATA =
     (SERVER = <% if @shared %>SHARED<% else %>DEDICATED<% end %>)
-    <%- if defined?(@dbname) %>(SERVICE_NAME = <%= @dbname %>)<% end -%>
+    <%- if defined?(@dbname) -%>
+    (SERVICE_NAME = <%= @dbname %>)
+    <%- end -%>
     <%- if defined?(@instance_name) -%>
     (INSTANCE_NAME=<%= @instance_name %>)
     <%- end -%>
