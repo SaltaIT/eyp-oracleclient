@@ -7,6 +7,7 @@ class oracleclient::instantclient (
                                     $basic_url      = undef,
                                     $devel_url      = undef,
                                     $sqlpus_url     = undef,
+                                    $tools_url      = undef,
                                     $ver            = '11.2',
                                     $package_ensure = 'installed',
                                     $srcdir         = '/usr/local/src',
@@ -83,6 +84,22 @@ class oracleclient::instantclient (
     provider => 'rpm',
     source   => "${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
     require  => Package["oracle-instantclient${ver}-devel"],
+  }
+
+  if($tools_url!=undef)
+  {
+    exec { "wget instantclient tools ${srcdir}":
+      command => "wget ${tools_url} -O ${srcdir}/oracle-instantclient${ver}-tools.rpm",
+      creates => "${srcdir}/oracle-instantclient${ver}-tools.rpm",
+      require => Exec[ [ 'which wget eyp-oracleclient instantclient', "mkdir p oracleclient instantclient ${srcdir}" ] ],
+    }
+
+    package { "oracle-instantclient${ver}-tools":
+      ensure   => $package_ensure,
+      provider => 'rpm',
+      source   => "${srcdir}/oracle-instantclient${ver}-tools.rpm",
+      require  => Exec["wget instantclient tools ${srcdir}"],
+    }
   }
 
 }

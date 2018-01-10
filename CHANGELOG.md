@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.29
+
+* added support for tools on **oracleclient::instantclient**
+
 ## 0.2.28
 
 * bugfix identation
