@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.30
+
+* devel_url is no longer required for **oracleclient::instantclient**
+
 ## 0.2.29
 
 * added support for tools on **oracleclient::instantclient**
