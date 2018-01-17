@@ -13,9 +13,11 @@ class oracleclient  (
                       $createusers            = true,
                       $addtopath              = false,
                       $debug_eyp_runinstaller = false,
-                      $software_to_install    = [ 'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
-                                                  'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc' ],
-                    )inherits params {
+                      $software_to_install    = [
+                                                  'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
+                                                  'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc'
+                                                ],
+                    ) inherits oracleclient::params {
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
@@ -55,7 +57,7 @@ class oracleclient  (
 
   if($localfile!=undef) and ($package!=undef)
   {
-    fail("Incompatible options: localfile(${localfile}) and package($package)")
+    fail("Incompatible options: localfile(${localfile}) and package(${package})")
   }
 
   exec { 'which unzip eyp-oracleclient':
