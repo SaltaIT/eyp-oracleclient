@@ -32,12 +32,6 @@ class oracleclient::instantclient (
     creates => $srcdir,
   }
 
-  exec { "wget instantclient sqlplus ${srcdir}":
-    command => "wget ${sqlpus_url} -O ${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
-    creates => "${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
-    require => Exec[ [ 'which wget eyp-oracleclient instantclient', "mkdir p oracleclient instantclient ${srcdir}" ] ],
-  }
-
   exec { "wget instantclient basic ${srcdir}":
     command => "wget ${basic_url} -O ${srcdir}/oracle-instantclient${ver}-basic.rpm",
     creates => "${srcdir}/oracle-instantclient${ver}-basic.rpm",
@@ -53,7 +47,13 @@ class oracleclient::instantclient (
     ensure   => $package_ensure,
     provider => 'rpm',
     source   => "${srcdir}/oracle-instantclient${ver}-basic.rpm",
-    require  => Exec[ [ "wget instantclient basic ${srcdir}", "wget instantclient devel ${srcdir}", "wget instantclient sqlplus ${srcdir}" ] ],
+    require  => Exec["wget instantclient basic ${srcdir}"],
+  }
+
+  exec { "wget instantclient sqlplus ${srcdir}":
+    command => "wget ${sqlpus_url} -O ${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
+    creates => "${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
+    require => Exec[ [ 'which wget eyp-oracleclient instantclient', "mkdir p oracleclient instantclient ${srcdir}" ] ],
   }
 
   # [root@centos7 src]# rpm -Uvh oracle-instantclient11.2-sqlplus.rpm
@@ -65,7 +65,7 @@ class oracleclient::instantclient (
     ensure   => $package_ensure,
     provider => 'rpm',
     source   => "${srcdir}/oracle-instantclient${ver}-sqlplus.rpm",
-    require  => Package["oracle-instantclient${ver}-basic"],
+    require  => [ Exec["wget instantclient sqlplus ${srcdir}"], Package["oracle-instantclient${ver}-basic"] ],
   }
 
   if($tools_url!=undef)
@@ -80,7 +80,7 @@ class oracleclient::instantclient (
       ensure   => $package_ensure,
       provider => 'rpm',
       source   => "${srcdir}/oracle-instantclient${ver}-tools.rpm",
-      require  => Exec["wget instantclient tools ${srcdir}"],
+      require  => [ Package["oracle-instantclient${ver}-basic"], Exec["wget instantclient tools ${srcdir}"] ],
     }
   }
 
@@ -101,7 +101,7 @@ class oracleclient::instantclient (
       ensure   => $package_ensure,
       provider => 'rpm',
       source   => "${srcdir}/oracle-instantclient${ver}-devel.rpm",
-      require  => Package["oracle-instantclient${ver}-basic"],
+      require  => [ Exec["wget instantclient devel ${srcdir}"], Package["oracle-instantclient${ver}-basic"] ],
     }
   }
 
