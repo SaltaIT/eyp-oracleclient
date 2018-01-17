@@ -16,6 +16,9 @@ class oracleclient  (
                       $software_to_install    = [ 'oracle.rdbms.util', 'oracle.javavm.client', 'oracle.sqlplus',
                                                   'oracle.dbjava.jdbc', 'oracle.network.client', 'oracle.odbc' ],
                     )inherits params {
+  Exec {
+    path => '/usr/sbin:/usr/bin:/sbin:/bin',
+  }
 
   validate_array($languages)
 
@@ -58,10 +61,6 @@ class oracleclient  (
   exec { 'which unzip eyp-oracleclient':
     command => 'which unzip',
     unless  => 'which unzip',
-  }
-
-  Exec {
-    path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
 
   if($createusers)

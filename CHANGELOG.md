@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.31
+
+* added tns_admin option to **oracleclient::connectstring**
+
 ## 0.2.30
 
 * devel_url is no longer required for **oracleclient::instantclient**
