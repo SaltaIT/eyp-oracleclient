@@ -15,13 +15,13 @@ class oracleclient::params {
         /^[67].*$/:
         {
         }
-        default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
+        default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
     }
     'Debian':
     {
-      fail("Unsupported")
+      fail('Unsupported')
     }
-    default: { fail("Unsupported OS!")  }
+    default: { fail('Unsupported OS!')  }
   }
 }
