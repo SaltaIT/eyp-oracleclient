@@ -16,6 +16,7 @@ define oracleclient::connectstring(
                                     $sid                       = undef,
                                     $global_name               = undef,
                                     $tns_admin                 = undef,
+                                    $order                     = '42',
                                   ) {
 
   # example
@@ -107,7 +108,7 @@ define oracleclient::connectstring(
 
   concat::fragment{ "tnsnames ${csname}":
     target  => $target_tnsnames,
-    order   => '42',
+    order   => $order,
     content => template("${module_name}/tnsnames.erb"),
   }
 }
