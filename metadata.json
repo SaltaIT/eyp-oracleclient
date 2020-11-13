@@ -1,7 +1,7 @@
 {
   "name": "eyp-oracleclient",
   "version": "0.2.31",
-  "author": "eyp",
+  "author": "Jordi Prats",
   "summary": "oracle client installation",
   "license": "Apache-2.0",
   "source": "https://github.com/SaltaIT/eyp-oracleclient",
